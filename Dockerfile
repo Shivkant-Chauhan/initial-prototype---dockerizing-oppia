@@ -16,14 +16,21 @@ RUN apt-get -y install python3-yaml
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pip install -r requirements_dev.txt
-RUN apt-get -y install npm
+# RUN curl -s https://deb.nodesource.com/setup_16.x | bash
+# RUN node -v
 
 COPY package.json .
 
+RUN apt-get -y install npm
+
 RUN npm install --legacy-peer-deps
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
 
 COPY . .
 
 EXPOSE 4200
 
-CMD [ "node_modules/.bin/ng", "serve", "--host", "0.0.0.0", "--disable-host-check"]
+# CMD [ "./node_modules/.bin/ng", "serve", "--host", "0.0.0.0", "--disableHostCheck"]
+# RUN node node_modules/webpack/bin/webpack.js --config webpack.dev.config.ts
+CMD ["./node_modules/.bin/ng", "serve", "--host", "0.0.0.0"]
