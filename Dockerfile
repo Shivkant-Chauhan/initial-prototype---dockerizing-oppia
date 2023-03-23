@@ -29,9 +29,9 @@ RUN pip install -r requirements_dev.txt
 # RUN npm install --legacy-peer-deps
 
 
-## We can install the google cloud sdk from the official website when the verified Google Cloud SDK image is deleted.
+# # We can install the google cloud sdk from the official website when the verified Google Cloud SDK image is deleted.
 # RUN apt-get install -y -qq wget python unzip
-# #install GAE
+# # Install GAE
 # RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
 # RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --additional-components app-engine-python
 # ENV PATH /google-cloud-sdk/bin:$PATH
