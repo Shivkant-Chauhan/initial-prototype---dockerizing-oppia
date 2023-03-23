@@ -1,5 +1,17 @@
-# [Oppia](https://www.oppia.org) [![Actions](https://github.com/oppia/oppia/workflows/End-to-End%20tests/badge.svg?branch=develop)](https://github.com/oppia/oppia/actions?query=branch%3Adevelop+workflow%3A%22End-to-End+tests%22) 
+# [Dockerizing Oppia](https://www.oppia.org) [![Actions](https://github.com/oppia/oppia/workflows/End-to-End%20tests/badge.svg?branch=develop)](https://github.com/oppia/oppia/actions?query=branch%3Adevelop+workflow%3A%22End-to-End+tests%22) 
 
+
+## Updated -->
+Now, I have packed up the application within the Docker containers, and all the pages are rendering within the containerized application, in which all the dependency installation and configuration is handled within the `webserver` container. Since, I have not started the firebase-emulator auth servie in the docker-compose file, the login is giving error but this will be fixed by configuring the firebase (in a separate dockerfile, building and setting up in docker-compose.yml file)
+
+https://user-images.githubusercontent.com/91013793/227344282-e602d610-a4a6-4946-b342-b689d72fecae.mov
+
+Also NOTE: I have used the pre-built webpack bundles of the files in this prototype, just add the RUN command in the `webserver dockerfile` to do the webpack compilations...
+
+
+
+
+## Initial
 This is the initial prototype for dockerizing oppia -->
  installing dependencies and rendering the FE application. Although, in the master branch, the docker containerized app is binded with the host as same `get` request seen in both docker container (using `exec`) and in the host -- using `curl -L localhost:4200`
 
