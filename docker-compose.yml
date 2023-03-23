@@ -5,35 +5,36 @@ services:
     platform: linux/amd64
     build: .
     ports:
-      - "4200:4200"
+      - "8181:8181"
     volumes: 
       - .:/app/oppia
       - /app/oppia/node_modules
     environment:
       - NODE_ENV=development
-    depends_on:
-      - redis
-      - cloud_datastore
-      # - elasticsearch
+## commenting this for now! net sucks..!!!!
+  #   depends_on:
+  #     - redis
+  #     - cloud_datastore
+  #     # - elasticsearch
 
-  redis:
-    image: redis:7.0-alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - .:/app/firebase_emulator_cache
+  # redis:
+  #   image: redis:7.0-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - .:/app/firebase_emulator_cache
 
-  cloud_datastore:
-    platform: linux/amd64
-    image: singularities/datastore-emulator
-    environment:
-      - DATASTORE_PROJECT_ID=dev-project-id
-      - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8089
-    ports:
-      - "8089:8089"
-    volumes:
-      - .:/app/cloud_datastore_emulator_cache
-    # command: gcloud beta emulators datastore start --consistency=1.0 --platform linux/amd64 --quiet
+  # cloud_datastore:
+  #   platform: linux/amd64
+  #   image: singularities/datastore-emulator
+  #   environment:
+  #     - DATASTORE_PROJECT_ID=dev-project-id
+  #     - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8089
+  #   ports:
+  #     - "8089:8089"
+  #   volumes:
+  #     - .:/app/cloud_datastore_emulator_cache
+  #   # command: gcloud beta emulators datastore start --consistency=1.0 --platform linux/amd64 --quiet
 
   # elasticsearch:
   #   image: elasticsearch:7.17.0

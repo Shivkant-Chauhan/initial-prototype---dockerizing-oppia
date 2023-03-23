@@ -236,7 +236,7 @@ oauth2client==3.0.0
     #   proto-google-cloud-datastore-v1
 ordered-set==4.1.0
     # via deepdiff
-orjson==3.6.3
+# orjson==3.6.3
     # via apache-beam
 overrides==6.1.0
     # via google-cloud-pubsublite
