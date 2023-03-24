@@ -2,6 +2,7 @@ FROM python:3.8
 
 WORKDIR /app/oppia
 
+# installing the pre-requisites
 RUN apt-get update
 RUN apt-get -y install curl
 RUN apt-get -y install git
@@ -18,6 +19,7 @@ RUN apt-get -y install python3-yaml
 # RUN apt-get -y install python3-matplotlib
 RUN pip install --upgrade pip==21.2.3
 
+# installing python dependencies from the requirements.txt file
 COPY requirements.txt .
 COPY requirements_dev.txt .
 
@@ -28,19 +30,13 @@ RUN pip install -r requirements_dev.txt
 # COPY package.json .
 # RUN npm install --legacy-peer-deps
 
-
-# # We can install the google cloud sdk from the official website when the verified Google Cloud SDK image is deleted.
-# RUN apt-get install -y -qq wget python unzip
-# # Install GAE
-# RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
-# RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --additional-components app-engine-python
-# ENV PATH /google-cloud-sdk/bin:$PATH
-
 RUN apt-get -y install python2
 COPY . .
 
-EXPOSE 8181
+EXPOSE 8080
 
+# CMD [ "node_modules/.bin/ng", "serve", "--host", "0.0.0.0" ]
+#
 ## NOTE :
 ## I am currently skipping the frontend build and the webpack compilation steps --
 ## (using the pre-built files in this prototype)
@@ -53,4 +49,4 @@ EXPOSE 8181
 ## from the /oppia-tools directory (copied to our root directory). This is a temporary solution,
 ## and I will be using the official docker image for the google cloud SDK while working in the GSoC project
 ## [link for the verified Google Cloud SDK image](https://hub.docker.com/r/google/cloud-sdk).
-CMD [ "./oppia_tools/google-cloud-sdk-364.0.0/google-cloud-sdk/bin/dev_appserver.py", "app_dev.yaml", "--runtime", "python38"]
+CMD [ "./oppia_tools/google-cloud-sdk-364.0.0/google-cloud-sdk/bin/dev_appserver.py", "app_dev.yaml", "--runtime", "python38", "--host", "0.0.0.0"]
