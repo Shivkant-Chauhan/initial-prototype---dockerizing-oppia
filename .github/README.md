@@ -6,8 +6,9 @@ Now, I have packed up the application within the Docker containers, and all the 
 
 https://user-images.githubusercontent.com/91013793/227344282-e602d610-a4a6-4946-b342-b689d72fecae.mov
 
-Also NOTE: I have used the pre-built webpack bundles of the files, and the already installed services from the /oppia-tools directory in this prototype, just add the RUN command in the `webserver dockerfile` to do the webpack compilations... but all these things I can handle care within the GSoC coding period
-
+## NOTE:
+I have used the pre-built webpack bundles of the files, and the already installed services from the /oppia-tools directory in this prototype, just add the RUN command in the `webserver dockerfile` to do the webpack compilations... 
+#### but all these things I can handle care within the GSoC coding period because they are intended to do during GSoC, not already before GSoC in the name of Prototype :)
 
 
 
