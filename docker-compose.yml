@@ -25,6 +25,9 @@ services:
   #     - "9099:9099"
   #   volumes:
   #     - .:/app/firebase_emulator_cache
+  #   stdin_open: true
+  #   tty: true
+  #   command: ./node_modules/firebase-tools/lib/bin/firebase.js emulators:start --only auth --project dev-project-id --config .firebase.json
 
   # redis:
   #   image: redis:7.0-alpine
