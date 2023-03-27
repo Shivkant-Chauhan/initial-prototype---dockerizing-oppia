@@ -10,8 +10,8 @@ RUN apt-get -y install git
 # RUN apt update
 # RUN add-apt-repository ppa:webupd8team/java
 # RUN apt-get -y install openjdk-8-jre
-RUN apt-get -y install python3-setuptools
 RUN apt-get -y install python3-dev
+RUN apt-get -y install python3-setuptools
 RUN apt-get -y install python3-pip
 RUN apt-get -y install unzip
 RUN apt-get -y install python3-yaml

@@ -3,6 +3,7 @@ version: "3.4"
 services:
   webserver:
     platform: linux/amd64
+    container_name: oppia-webserver
     build: .
     ports:
       - "8080:8080"

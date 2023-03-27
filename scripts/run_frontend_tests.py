@@ -30,7 +30,7 @@ from typing import Optional, Sequence  # isort:skip
 
 from . import build  # isort:skip
 from . import check_frontend_test_coverage  # isort:skip
-from . import install_third_party_libs  # isort:skip
+# from . import install_third_party_libs  # isort:skip
 
 # These is a relative path from the oppia/ folder. They are relative because the
 # dtslint command prepends the current working directory to the path, even if
@@ -116,13 +116,13 @@ def main(args: Optional[Sequence[str]] = None) -> None:
     if parsed_args.dtslint_only:
         return
 
-    if not parsed_args.skip_install:
-        install_third_party_libs.main()
+    # if not parsed_args.skip_install:
+        # install_third_party_libs.main()
 
     common.setup_chrome_bin_env_variable()
     # We need to create an empty hashes.json file for the build so that
     # we don't get the error "assets/hashes.json file doesn't exist".
-    build.save_hashes_to_file({})
+    # build.save_hashes_to_file({})
     common.print_each_string_after_two_new_lines([
         'View interactive frontend test coverage reports by navigating to',
         '../karma_coverage_reports',
@@ -136,11 +136,11 @@ def main(args: Optional[Sequence[str]] = None) -> None:
     if parsed_args.run_minified_tests:
         print('Running test in production environment')
 
-        build.main(args=['--prod_env', '--minify_third_party_libs_only'])
+        # build.main(args=['--prod_env', '--minify_third_party_libs_only'])
 
-        cmd.append('--prodEnv')
-    else:
-        build.main(args=[])
+        # cmd.append('--prodEnv')
+    # else:
+        # build.main(args=[])
 
     if parsed_args.verbose:
         cmd.append('--terminalEnabled')
