@@ -4,7 +4,7 @@ run:
 	docker compose up --build
 
 install-dependencies:
-	docker build -t $(CONTAINER_NAME) -f Dockerfile .
+	docker compose build
 
 update-pip-and-npm-packages:
 	git pull origin develop --ff
