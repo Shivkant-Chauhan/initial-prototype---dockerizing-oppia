@@ -7,8 +7,9 @@ install-dependencies:
 	docker compose build
 
 update-pip-and-npm-packages:
-	git pull origin develop --ff
-	docker build -t $(CONTAINER_NAME) -f Dockerfile .
+	pip install -r requirements.txt
+	pip install -r requirements_dev.txt
+	npm install --legacy-peer-deps
 	 
 clean:
 	docker rm -f oppia-webserver oppia-redis oppia-elasticsearch
