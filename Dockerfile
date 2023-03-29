@@ -15,8 +15,8 @@ RUN apt-get -y install python3-setuptools
 RUN apt-get -y install python3-pip
 RUN apt-get -y install unzip
 RUN apt-get -y install python3-yaml
-# RUN apt-get -y install python-matplotlib
-# RUN apt-get -y install python3-matplotlib
+RUN apt-get -y install python-matplotlib
+RUN apt-get -y install python3-matplotlib
 RUN pip install --upgrade pip==21.2.3
 
 # installing python dependencies from the requirements.txt file
@@ -27,8 +27,8 @@ RUN pip install -r requirements.txt
 RUN pip install -r requirements_dev.txt
 
 ## installing packages from the package.json file
-# COPY package.json .
-# RUN npm install --legacy-peer-deps
+COPY package.json .
+RUN npm install --legacy-peer-deps
 
 RUN apt-get -y install python2
 COPY . .
