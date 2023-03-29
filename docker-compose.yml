@@ -12,48 +12,48 @@ services:
       - /app/oppia/node_modules
     environment:
       - NODE_ENV=development
-  #   depends_on:
-  #     - redis
-  #     - google_cloud_sdk
-  #     - elasticsearch
-  #     - firebase_emulator
+    depends_on:
+      - redis
+      - google_cloud_sdk
+      - elasticsearch
+      - firebase_emulator
 
-  # firebase_emulator:
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile.firebase_emulator
-  #   ports:
-  #     - "9099:9099"
-  #   volumes:
-  #     - .:/app/firebase_emulator_cache
-  #   stdin_open: true
-  #   tty: true
-  #   command: ./node_modules/firebase-tools/lib/bin/firebase.js emulators:start --only auth --project dev-project-id --config .firebase.json
+  firebase_emulator:
+    build: 
+      context: .
+      dockerfile: Dockerfile.firebase_emulator
+    ports:
+      - "9099:9099"
+    volumes:
+      - .:/app/firebase_emulator_cache
+    stdin_open: true
+    tty: true
+    command: ./node_modules/firebase-tools/lib/bin/firebase.js emulators:start --only auth --project dev-project-id --config .firebase.json
 
-  # redis:
-  #   image: redis:7.0-alpine
-  #   ports:
-  #     - "6379:6379"
-  #   volumes:
-  #     - .:/app/firebase_emulator_cache
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - .:/app/firebase_emulator_cache
 
-  # google_cloud_sdk:
-  #   image: google/cloud-sdk:364.0.0
-  #   environment:
-  #     - DATASTORE_PROJECT_ID=dev-project-id
-  #     - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8089
-  #   ports:
-  #     - "8089:8089"
-  #     - "8080:8080"
-  #     - "8000:8000"
-  #   volumes:
-  #     - .:/app/cloud_datastore_emulator_cache
-  #   command: gcloud beta emulators datastore start --consistency=1.0 --platform linux/amd64 --quiet
+  google_cloud_sdk:
+    image: google/cloud-sdk:364.0.0
+    environment:
+      - DATASTORE_PROJECT_ID=dev-project-id
+      - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8089
+    ports:
+      - "8089:8089"
+      - "8080:8080"
+      - "8000:8000"
+    volumes:
+      - .:/app/cloud_datastore_emulator_cache
+    command: gcloud beta emulators datastore start --consistency=1.0 --platform linux/amd64 --quiet
 
-  # elasticsearch:
-  #   image: elasticsearch:7.17.0
-  #   ports:
-  #     - "9200:9200"
-  #   volumes:
-  #     - .:/usr/share/elasticsearch/data
-  #   restart: unless-stopped
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    ports:
+      - "9200:9200"
+    volumes:
+      - .:/usr/share/elasticsearch/data
+    restart: unless-stopped
