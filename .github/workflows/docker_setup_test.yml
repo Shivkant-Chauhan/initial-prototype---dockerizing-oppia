@@ -1,16 +1,6 @@
 name: Docker Setup Test
 
-on:
-  merge_group:
-    types: [checks_requested]
-  push:
-    branches:
-      - develop
-      - release-*
-  pull_request:
-    branches:
-      - develop
-      - release-*
+on: [push]
 
 jobs:
   build:
@@ -20,10 +10,7 @@ jobs:
         os: [ubuntu-22.04]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: make install-dependencies && make-update-pip-and-npm-packages
-
-      - name: Run Dockerized application
-        run: make run
+      - name: Start Containers
+        run: docker compose -f "docker-compose.yml" up -d --build
